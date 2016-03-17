@@ -128,36 +128,42 @@
                         color = pinImage7;
                     else if(locations[i][2]== "Amusement Park")
                         color = pinImage8;
-                        var marker = new google.maps.Marker({
+                    var marker = new google.maps.Marker({
                         position: myLatLng,
                         map: map,
                         icon: color,
                     });
-
                     pathall.push(myLatLng);
-
                   }
-                    
-               
+                var flightPath;
+                var mall3=[];
+                for(i = 0; i < mall.length; i++){
+                    for(j = 0; j < mall.length; j++){
+                        mall3.push(mall[i]);
+                        mall3.push(mall[j]);
+                        //document.write(i + "" + j + " ");
+                        var flightPath=new google.maps.Polyline({
+                          path:mall3,
+                          strokeColor:"#00ffff",
+                          strokeOpacity:0.5,
+                          strokeWeight:10
+                          });
+                        flightPath.setMap(map);
+                        mall3=[];
+                     }
+                }
 
-                  var pathpath=new google.maps.Polyline({
+                
+                var pathpath=new google.maps.Polyline({
                   path:pathall,
                   strokeColor:"#FF0000",
                   strokeOpacity:0.5,
                   strokeWeight:6
                   });
 
-                  var flightPath=new google.maps.Polyline({
-                  path:mall,
-                  strokeColor:"#00ffff",
-                  strokeOpacity:0.5,
-                  strokeWeight:10
-                  });
-
-
-                pathpath.setMap(map);
+                    pathpath.setMap(map);
                  
-                  flightPath.setMap(map);
+                  
                      
             }
 
